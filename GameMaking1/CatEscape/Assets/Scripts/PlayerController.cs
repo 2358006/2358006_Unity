@@ -26,10 +26,9 @@ public class PlayerController : MonoBehaviour
       }
     }
   }
-
   public void LButton()
   {
-    if (transform.position.x + (-move) > -8 && !gameDirector.GetComponent<GameDirector>().GameOver())
+    if (!gameDirector.GetComponent<GameDirector>().GameOver() && transform.position.x + (-move) > -8)
     {
       Debug.Log("왼쪽으로 움직인다");
       transform.Translate(-move, 0, 0);
@@ -38,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
   public void RButton()
   {
-    if (transform.position.x + move < 8 && !gameDirector.GetComponent<GameDirector>().GameOver())
+    if (!gameDirector.GetComponent<GameDirector>().GameOver() && transform.position.x + move < 8)
     {
       Debug.Log("오른쪽으로 움직인다");
       transform.Translate(move, 0, 0);

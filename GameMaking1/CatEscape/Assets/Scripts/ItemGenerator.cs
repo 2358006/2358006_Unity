@@ -1,13 +1,13 @@
 using UnityEngine;
-public class ArrowerGenerator : MonoBehaviour
+public class ItemGenerator : MonoBehaviour
 {
   GameObject gameDirector = null;
-  public GameObject arrowPrefab = null;
+  public GameObject itemPrefab = null;
 
-  GameObject arrowInstance = null;
-  int arrowPositionRange = 0;
+  GameObject itemInstance = null;
+  float itemPositionRange = 0;
 
-  float aroowSpawn = 1.0f;
+  float itemSpawn = 3f;
   float deltaTime = 0.0f;
 
   void Awake()
@@ -25,13 +25,12 @@ public class ArrowerGenerator : MonoBehaviour
     {
       this.deltaTime += Time.deltaTime;
 
-      if (deltaTime > aroowSpawn)
+      if (deltaTime > itemSpawn)
       {
         deltaTime = 0f;
-        arrowInstance = Instantiate(arrowPrefab);
-        arrowPositionRange = Random.Range(-6, 7);
-
-        arrowInstance.transform.position = new(arrowPositionRange, 7, 0);
+        itemInstance = Instantiate(itemPrefab);
+        itemPositionRange = Random.Range(-6f, 7f);
+        itemInstance.transform.position = new(itemPositionRange, 7, 0);
       }
     }
   }
