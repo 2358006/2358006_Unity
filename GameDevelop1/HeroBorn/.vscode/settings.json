@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "GameDevelop.sln"
+    "dotnet.defaultSolution": "HeroBorn.sln"
 }

@@ -1,0 +1,17 @@
+# VS 설치 법
+1. 비주얼스튜디오 공식홈페이지(https://visualstudio.microsoft.com/ko/)에 접속함
+2. Visual Studio 다운로드 버튼 클릭
+3. 다운 받은 Visual Studio Setup.exe 실행
+4. Visual Studio Installer를 실행하고, 사용가능에서 Visual Studio Community 설치
+5. 워크로드에서 Unity를 사용한 게임개발 체크 하기
+6. 기다리기 (VS 설치 완)
+
+# Unity 설치
+1. 유니티 공홈(https://unity.com/kr)에 접속함
+2. 다운로드 클릭
+3. 다운로드 또 클릭
+4. UnityHub SetUp 설치
+5. UnityHub 실행
+6. 로그인
+7. Editor 와 프로젝트 저장 위치 확인
+8. Unity Editor 설치(Editor 설치 안되있을경우)
