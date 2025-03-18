@@ -1,17 +1,22 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 public class GameDirector : MonoBehaviour
 {
-  GameObject hpGauge = null;
-  GameObject feverGauge = null;
+  public TMP_Text scoreText = null;
+  public int score = 0;
+
   GameObject gameOver = null;
+  GameObject hpGauge = null;
   GameObject reStart = null;
 
   void Awake()
   {
     this.hpGauge = GameObject.Find("HpGauge");
-    this.feverGauge = GameObject.Find("FeverGauge");
+
+    this.scoreText.text = "Score : " + score;
+
     reStart = GameObject.Find("ReStart");
     gameOver = GameObject.Find("GameOver");
   }
@@ -28,48 +33,16 @@ public class GameDirector : MonoBehaviour
 
   public void DecreaseHp()
   {
-    if (!FeverCheck())
-    {
-      this.hpGauge.GetComponent<Image>().fillAmount -= 0.1f;
-      Debug.Log("현재 체력 : " + hpGauge.GetComponent<Image>().fillAmount);
-    }
-    else
-    {
-      Debug.Log("피버 작동중, 현재 체력 : " + hpGauge.GetComponent<Image>().fillAmount);
-    }
+    this.hpGauge.GetComponent<Image>().fillAmount -= 0.1f;
+    Debug.Log("현재 체력 : " + hpGauge.GetComponent<Image>().fillAmount);
   }
 
-  public void IncreaseFever()
+  public void IncreaseScore()
   {
-    this.feverGauge.GetComponent<Image>().fillAmount += 0.2f;
+    score += 10;
+    this.scoreText.text = "Score : " + score;
+    Debug.Log("점수 : " + score);
   }
-
-  // 피버 차면 피버 작동
-  bool FeverCheck()
-  {
-    if (this.feverGauge.GetComponent<Image>().fillAmount == 1f)
-    {
-      return true;
-    }
-    else
-    {
-      return false;
-    }
-  }
-
-  void Fever()
-  {
-    if (FeverCheck())
-    {
-      Invoke("FeverOff", 3f);
-    }
-  }
-
-  void FeverOff()
-  {
-    this.feverGauge.GetComponent<Image>().fillAmount = 0f;
-  }
-
 
   public bool GameOver()
   {

@@ -2,12 +2,12 @@ using UnityEngine;
 public class ItemGenerator : MonoBehaviour
 {
   GameObject gameDirector = null;
-  public GameObject itemPrefab = null;
+  public GameObject[] itemPrefab = { null, };
 
   GameObject itemInstance = null;
   float itemPositionRange = 0;
 
-  float itemSpawn = 3f;
+  float itemSpawn = 1f;
   float deltaTime = 0.0f;
 
   void Awake()
@@ -28,7 +28,7 @@ public class ItemGenerator : MonoBehaviour
       if (deltaTime > itemSpawn)
       {
         deltaTime = 0f;
-        itemInstance = Instantiate(itemPrefab);
+        itemInstance = Instantiate(itemPrefab[Random.Range(0, itemPrefab.Length)]);
         itemPositionRange = Random.Range(-6f, 7f);
         itemInstance.transform.position = new(itemPositionRange, 7, 0);
       }

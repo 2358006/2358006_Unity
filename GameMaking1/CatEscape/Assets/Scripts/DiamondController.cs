@@ -1,16 +1,16 @@
 using UnityEngine;
-public class ItemController : MonoBehaviour
+public class DiamondController : MonoBehaviour
 {
   GameObject player = null;
   GameObject gameDirector = null;
 
-  Vector2 itemVector = Vector2.zero;
+  Vector2 diamondVector = Vector2.zero;
   Vector2 playerVector = Vector2.zero;
-  Vector2 itemPlayerDir = Vector2.zero;
+  Vector2 diamondPlayerDir = Vector2.zero;
 
-  float itemRadius = 0.5f;
+  float diamondRadius = 0.5f;
   float playerRadius = 1.0f;
-  float itemPlayerDistance = 0f;
+  float diamondPlayerDistance = 0f;
 
   void Awake()
   {
@@ -33,16 +33,16 @@ public class ItemController : MonoBehaviour
         Destroy(gameObject);
       }
 
-      itemVector = transform.position;
+      diamondVector = transform.position;
       playerVector = this.player.transform.position;
-      itemPlayerDir = itemVector - playerVector;
+      diamondPlayerDir = diamondVector - playerVector;
 
-      itemPlayerDistance = itemPlayerDir.magnitude;
+      diamondPlayerDistance = diamondPlayerDir.magnitude;
 
-      if ((itemRadius + playerRadius) > itemPlayerDistance)
+      if ((diamondRadius + playerRadius) > diamondPlayerDistance)
       {
         Debug.Log("다이아몬드 득");
-        gameDirector.GetComponent<GameDirector>().IncreaseFever();
+        gameDirector.GetComponent<GameDirector>().IncreaseScore();
         Destroy(gameObject);
       }
     }

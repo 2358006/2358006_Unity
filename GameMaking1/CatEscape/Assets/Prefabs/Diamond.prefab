@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1374672652618726036}
   - component: {fileID: 1420724412413909527}
   m_Layer: 0
-  m_Name: Item
+  m_Name: Diamond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
