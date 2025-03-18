@@ -18,7 +18,7 @@ public class GameDirector : MonoBehaviour
     this.scoreText.text = "Score : " + score;
 
     reStart = GameObject.Find("ReStart");
-    gameOver = GameObject.Find("GameOver");
+    gameOver = GameObject.Find("Text");
   }
   void Start()
   {
