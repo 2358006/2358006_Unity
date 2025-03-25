@@ -1,16 +1,16 @@
 using UnityEngine;
-public class DiamondController : MonoBehaviour
+public class GoldController : MonoBehaviour
 {
   GameObject player = null;
   GameObject gameDirector = null;
 
-  Vector2 diamondVector = Vector2.zero;
+  Vector2 goldVector = Vector2.zero;
   Vector2 playerVector = Vector2.zero;
-  Vector2 diamondPlayerDir = Vector2.zero;
+  Vector2 goldPlayerDir = Vector2.zero;
 
-  float diamondRadius = 0.5f;
+  float goldRadius = 0.5f;
   float playerRadius = 1.0f;
-  float diamondPlayerDistance = 0f;
+  float goldPlayerDistance = 0f;
 
   void Awake()
   {
@@ -29,20 +29,20 @@ public class DiamondController : MonoBehaviour
       transform.Translate(0, -0.1f, 0);
       if (transform.position.y < -5f)
       {
-        Debug.Log("다이아몬드가 작살났습니다.");
+        Debug.Log("금괴가 작살났습니다.");
         Destroy(gameObject);
       }
 
-      diamondVector = transform.position;
+      goldVector = transform.position;
       playerVector = this.player.transform.position;
-      diamondPlayerDir = diamondVector - playerVector;
+      goldPlayerDir = goldVector - playerVector;
 
-      diamondPlayerDistance = diamondPlayerDir.magnitude;
+      goldPlayerDistance = goldPlayerDir.magnitude;
 
-      if ((diamondRadius + playerRadius) > diamondPlayerDistance)
+      if ((goldRadius + playerRadius) > goldPlayerDistance)
       {
-        Debug.Log("다이아몬드 득");
-        gameDirector.GetComponent<GameDirector>().IncreaseScoreDIA();
+        Debug.Log("금괴 득");
+        gameDirector.GetComponent<GameDirector>().IncreaseScoreGOLD();
         Destroy(gameObject);
       }
     }

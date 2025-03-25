@@ -5,7 +5,9 @@ using TMPro;
 public class GameDirector : MonoBehaviour
 {
   public TMP_Text scoreText = null;
-  public int score = 0;
+  public int goldPoint = 0;
+  public int diaPoint = 0;
+  int score = 0;
 
   GameObject gameOver = null;
   GameObject hpGauge = null;
@@ -37,9 +39,16 @@ public class GameDirector : MonoBehaviour
     Debug.Log("현재 체력 : " + hpGauge.GetComponent<Image>().fillAmount);
   }
 
-  public void IncreaseScore()
+  public void IncreaseScoreDIA()
   {
-    score += 10;
+    score += diaPoint;
+    this.scoreText.text = "Score : " + score;
+    Debug.Log("점수 : " + score);
+  }
+
+  public void IncreaseScoreGOLD()
+  {
+    score += goldPoint;
     this.scoreText.text = "Score : " + score;
     Debug.Log("점수 : " + score);
   }
