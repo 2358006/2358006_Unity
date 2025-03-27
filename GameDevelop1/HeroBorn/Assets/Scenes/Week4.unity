@@ -329,12 +329,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1615079127}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dcf4b01e6e004d48954491a96021419, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cd7e255ae6d1c0499c2a5f1569c9d04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeOfCircle: 314
-  in1: 10
-  in2: 5
 --- !u!1 &1662810880
 GameObject:
   m_ObjectHideFlags: 0
