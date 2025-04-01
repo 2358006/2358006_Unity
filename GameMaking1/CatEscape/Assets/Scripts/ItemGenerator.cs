@@ -8,7 +8,11 @@ public class ItemGenerator : MonoBehaviour
   float itemPositionRange = 0;
 
   float itemSpawn = 1f;
+  public float spawnMin = 0f;
   float deltaTime = 0.0f;
+
+  int nowScore = 0;
+  int scorePer100 = 0;
 
   void Awake()
   {
@@ -17,6 +21,16 @@ public class ItemGenerator : MonoBehaviour
 
   void Update()
   {
+    Generate(Timing());
+  }
+
+  void Generate(float spawnTime)
+  {
+    if (!gameDirector.GetComponent<GameDirector>().GameStart())
+    {
+      gameObject.SetActive(true);
+    }
+
     if (gameDirector.GetComponent<GameDirector>().GameOver())
     {
       gameObject.SetActive(false);
@@ -25,7 +39,7 @@ public class ItemGenerator : MonoBehaviour
     {
       this.deltaTime += Time.deltaTime;
 
-      if (deltaTime > itemSpawn)
+      if (deltaTime > spawnTime)
       {
         deltaTime = 0f;
         itemInstance = Instantiate(itemPrefab[Random.Range(0, itemPrefab.Length)]);
@@ -33,5 +47,19 @@ public class ItemGenerator : MonoBehaviour
         itemInstance.transform.position = new(itemPositionRange, 7, 0);
       }
     }
+  }
+
+  float Timing()
+  {
+    this.nowScore = gameDirector.GetComponent<GameDirector>().score;
+
+    if ((this.nowScore - scorePer100 * 100) == 100 && itemSpawn > spawnMin)
+    {
+      itemSpawn *= 0.8f;
+      scorePer100++;
+    }
+
+    Debug.Log($"속도 : {itemSpawn}");
+    return itemSpawn;
   }
 }

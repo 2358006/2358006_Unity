@@ -26,25 +26,31 @@ public class ArrowController : MonoBehaviour
     }
     else
     {
-      transform.Translate(0, -0.1f, 0);
-      if (transform.position.y < -5f)
-      {
-        Debug.Log("화살의 내구도가 0이 되었습니다.");
-        Destroy(gameObject);
-      }
+      gameObject.SetActive(true);
+      MoveArrow();
+    }
+  }
 
-      arrowVector = transform.position;
-      playerVector = this.player.transform.position;
-      arrowPlayerDir = arrowVector - playerVector;
+  void MoveArrow()
+  {
+    transform.Translate(0, -0.1f, 0);
+    if (transform.position.y < -5f)
+    {
+      Debug.Log("아이템이 땅에 떨어졌습니다.");
+      Destroy(gameObject);
+    }
 
-      arrowPlayerDistance = arrowPlayerDir.magnitude;
+    arrowVector = transform.position;
+    playerVector = this.player.transform.position;
+    arrowPlayerDir = arrowVector - playerVector;
 
-      if ((arrowRadius + playerRadius) > arrowPlayerDistance)
-      {
-        Debug.Log("화살에 맞았어요");
-        gameDirector.GetComponent<GameDirector>().DecreaseHp();
-        Destroy(gameObject);
-      }
+    arrowPlayerDistance = arrowPlayerDir.magnitude;
+
+    if ((arrowRadius + playerRadius) > arrowPlayerDistance)
+    {
+      Debug.Log("플레이어와 충돌하였습니다.");
+      gameDirector.GetComponent<GameDirector>().DecreaseHp();
+      Destroy(gameObject);
     }
   }
 }

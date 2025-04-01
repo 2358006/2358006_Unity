@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9051512391728655406}
   - component: {fileID: 1374672652618726036}
-  - component: {fileID: 1420724412413909527}
+  - component: {fileID: 983086766160803591}
   m_Layer: 0
   m_Name: diamond
   m_TagString: Untagged
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1420724412413909527
+--- !u!114 &983086766160803591
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

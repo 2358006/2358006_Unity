@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6902991382089666108}
   - component: {fileID: 7854600571220530120}
-  - component: {fileID: 1841956519224730834}
+  - component: {fileID: 1923763773523384288}
   m_Layer: 0
   m_Name: gold
   m_TagString: Untagged
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1841956519224730834
+--- !u!114 &1923763773523384288
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

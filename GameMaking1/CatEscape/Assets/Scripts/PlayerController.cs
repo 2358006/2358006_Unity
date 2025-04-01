@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
   void Update()
   {
-    if (!gameDirector.GetComponent<GameDirector>().GameOver())
+    if (!gameDirector.GetComponent<GameDirector>().GameOver() && !gameDirector.GetComponent<GameDirector>().GameStart())
     {
       if (Input.GetKeyDown(KeyCode.LeftArrow) && transform.position.x + (-move) > -8)
       {
@@ -28,19 +28,25 @@ public class PlayerController : MonoBehaviour
   }
   public void LButton()
   {
-    if (!gameDirector.GetComponent<GameDirector>().GameOver() && transform.position.x + (-move) > -8)
+    if (!gameDirector.GetComponent<GameDirector>().GameOver() && !gameDirector.GetComponent<GameDirector>().GameStart())
     {
-      Debug.Log("왼쪽으로 움직인다");
-      transform.Translate(-move, 0, 0);
+      if (transform.position.x + (-move) > -8)
+      {
+        Debug.Log("왼쪽으로 움직인다");
+        transform.Translate(-move, 0, 0);
+      }
     }
   }
 
   public void RButton()
   {
-    if (!gameDirector.GetComponent<GameDirector>().GameOver() && transform.position.x + move < 8)
+    if (!gameDirector.GetComponent<GameDirector>().GameOver() && !gameDirector.GetComponent<GameDirector>().GameStart())
     {
-      Debug.Log("오른쪽으로 움직인다");
-      transform.Translate(move, 0, 0);
+      if (transform.position.x + move < 8)
+      {
+        Debug.Log("오른쪽으로 움직인다");
+        transform.Translate(move, 0, 0);
+      }
     }
   }
 }

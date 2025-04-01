@@ -7,11 +7,15 @@ public class GameDirector : MonoBehaviour
   public TMP_Text scoreText = null;
   public int goldPoint = 0;
   public int diaPoint = 0;
-  int score = 0;
+  public int score = 0;
+
+  GameObject hpGauge = null;
 
   GameObject gameOver = null;
-  GameObject hpGauge = null;
   GameObject reStart = null;
+
+  GameObject gameStart = null;
+  GameObject start = null;
 
   void Awake()
   {
@@ -20,8 +24,12 @@ public class GameDirector : MonoBehaviour
     this.scoreText.text = "Score : " + score;
 
     reStart = GameObject.Find("ReStart");
-    gameOver = GameObject.Find("Text");
+    gameOver = GameObject.Find("GameOver");
+
+    start = GameObject.Find("Start");
+    gameStart = GameObject.Find("GameStart");
   }
+
   void Start()
   {
     reStart.SetActive(false);
@@ -30,12 +38,18 @@ public class GameDirector : MonoBehaviour
 
   void Update()
   {
-    GameOver();
+    ScoreTest();
   }
 
   public void DecreaseHp()
   {
     this.hpGauge.GetComponent<Image>().fillAmount -= 0.1f;
+
+    if (this.hpGauge.GetComponent<Image>().fillAmount == 0)
+    {
+      GameOver();
+    }
+
     Debug.Log("현재 체력 : " + hpGauge.GetComponent<Image>().fillAmount);
   }
 
@@ -53,12 +67,36 @@ public class GameDirector : MonoBehaviour
     Debug.Log("점수 : " + score);
   }
 
+  void ScoreTest()
+  {
+    if (Input.GetKeyDown(KeyCode.W))
+    {
+      score += 100;
+      this.scoreText.text = "Score : " + score;
+    }
+  }
+
+  public void StartButton()
+  {
+    gameStart.SetActive(false);
+    start.SetActive(false);
+  }
+
   public bool GameOver()
   {
     if (this.hpGauge.GetComponent<Image>().fillAmount == 0f || Input.GetKeyDown(KeyCode.Space))
     {
       gameOver.SetActive(true);
       reStart.SetActive(true);
+      return true;
+    }
+    return false;
+  }
+
+  public bool GameStart()
+  {
+    if (gameStart.activeSelf && start.activeSelf)
+    {
       return true;
     }
     return false;
