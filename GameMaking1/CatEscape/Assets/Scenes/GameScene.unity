@@ -1140,7 +1140,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1876319827}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1195390119
@@ -1612,7 +1613,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 272259346}
         m_TargetAssemblyTypeName: GameDirector, Assembly-CSharp
-        m_MethodName: StartButton
+        m_MethodName: GameStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1892,7 +1893,7 @@ RectTransform:
   m_Children:
   - {fileID: 1669968850}
   - {fileID: 2126312043}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1195390118}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2308,7 +2309,6 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 21925737}
   - {fileID: 231401629}
-  - {fileID: 1876319827}
   - {fileID: 1520661679}
   - {fileID: 1195390118}
   - {fileID: 22357668}
