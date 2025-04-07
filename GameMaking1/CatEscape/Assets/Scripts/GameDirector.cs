@@ -16,6 +16,7 @@ public class GameDirector : MonoBehaviour
 
   GameObject gameStart = null;
   GameObject start = null;
+  GameObject itemGenerator = null;
 
   void Awake()
   {
@@ -28,29 +29,28 @@ public class GameDirector : MonoBehaviour
 
     start = GameObject.Find("Start");
     gameStart = GameObject.Find("GameStart");
+    itemGenerator = GameObject.Find("ItemGenerator");
   }
 
   void Start()
   {
     reStart.SetActive(false);
     gameOver.SetActive(false);
+    itemGenerator.SetActive(false);
   }
 
   void Update()
   {
+    GameOverTest();
     ScoreTest();
   }
 
+  #region GameDirector
   public void DecreaseHp()
   {
     this.hpGauge.GetComponent<Image>().fillAmount -= 0.1f;
-
-    if (this.hpGauge.GetComponent<Image>().fillAmount == 0)
-    {
-      GameOver();
-    }
-
     Debug.Log("현재 체력 : " + hpGauge.GetComponent<Image>().fillAmount);
+    CheckPlay();
   }
 
   public void IncreaseScoreDIA()
@@ -66,6 +66,50 @@ public class GameDirector : MonoBehaviour
     this.scoreText.text = "Score : " + score;
     Debug.Log("점수 : " + score);
   }
+  public bool CheckPlay()
+  {
+    if (this.hpGauge.GetComponent<Image>().fillAmount == 0f)
+    {
+      GameOver();
+      return false;
+    }
+    else
+    {
+      return true;
+    }
+  }
+
+  void GameOver()
+  {
+    gameOver.SetActive(true);
+    reStart.SetActive(true);
+    itemGenerator.SetActive(false);
+  }
+  #endregion
+
+  #region Button
+  public void GameStart()
+  {
+    gameStart.SetActive(false);
+    start.SetActive(false);
+    itemGenerator.SetActive(true);
+  }
+
+  public void ReStart()
+  {
+    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    Time.timeScale = 1f;
+  }
+  #endregion
+
+  #region TestCode
+  void GameOverTest()
+  {
+    if (Input.GetKeyDown(KeyCode.Q))
+    {
+      this.hpGauge.GetComponent<Image>().fillAmount = 0;
+    }
+  }
 
   void ScoreTest()
   {
@@ -75,36 +119,5 @@ public class GameDirector : MonoBehaviour
       this.scoreText.text = "Score : " + score;
     }
   }
-
-  public void StartButton()
-  {
-    gameStart.SetActive(false);
-    start.SetActive(false);
-  }
-
-  public bool GameOver()
-  {
-    if (this.hpGauge.GetComponent<Image>().fillAmount == 0f || Input.GetKeyDown(KeyCode.Space))
-    {
-      gameOver.SetActive(true);
-      reStart.SetActive(true);
-      return true;
-    }
-    return false;
-  }
-
-  public bool GameStart()
-  {
-    if (gameStart.activeSelf && start.activeSelf)
-    {
-      return true;
-    }
-    return false;
-  }
-
-  public void ReStart()
-  {
-    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    Time.timeScale = 1f;
-  }
+  #endregion
 }

@@ -20,13 +20,13 @@ public class DiamondController : MonoBehaviour
 
   void FixedUpdate()
   {
-    if (gameDirector.GetComponent<GameDirector>().GameOver())
+    if (gameDirector.GetComponent<GameDirector>().CheckPlay())
     {
-      gameObject.SetActive(false);
+      MoveDIA();
     }
     else
     {
-      MoveDIA();
+      gameObject.SetActive(false);
     }
   }
 

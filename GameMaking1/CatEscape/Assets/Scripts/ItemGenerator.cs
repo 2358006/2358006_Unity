@@ -21,31 +21,32 @@ public class ItemGenerator : MonoBehaviour
 
   void Update()
   {
-    Generate(Timing());
+    ItemSpawn();
   }
 
-  void Generate(float spawnTime)
+  void ItemSpawn()
   {
-    if (!gameDirector.GetComponent<GameDirector>().GameStart())
+    if (gameDirector.GetComponent<GameDirector>().CheckPlay())
     {
-      gameObject.SetActive(true);
-    }
-
-    if (gameDirector.GetComponent<GameDirector>().GameOver())
-    {
-      gameObject.SetActive(false);
+      Debug.Log("게임 시작");
+      ItemGenerate(Timing());
     }
     else
     {
-      this.deltaTime += Time.deltaTime;
+      Debug.Log("게임 끝");
+    }
+  }
 
-      if (deltaTime > spawnTime)
-      {
-        deltaTime = 0f;
-        itemInstance = Instantiate(itemPrefab[Random.Range(0, itemPrefab.Length)]);
-        itemPositionRange = Random.Range(-6f, 7f);
-        itemInstance.transform.position = new(itemPositionRange, 7, 0);
-      }
+  void ItemGenerate(float spawnTime)
+  {
+    this.deltaTime += Time.deltaTime;
+
+    if (deltaTime > spawnTime)
+    {
+      deltaTime = 0f;
+      itemInstance = Instantiate(itemPrefab[Random.Range(0, itemPrefab.Length)]);
+      itemPositionRange = Random.Range(-6f, 7f);
+      itemInstance.transform.position = new(itemPositionRange, 7, 0);
     }
   }
 

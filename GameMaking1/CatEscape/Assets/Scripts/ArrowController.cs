@@ -20,14 +20,14 @@ public class ArrowController : MonoBehaviour
 
   void FixedUpdate()
   {
-    if (gameDirector.GetComponent<GameDirector>().GameOver())
+    if (gameDirector.GetComponent<GameDirector>().CheckPlay())
     {
-      gameObject.SetActive(false);
+
+      MoveArrow();
     }
     else
     {
-      gameObject.SetActive(true);
-      MoveArrow();
+      gameObject.SetActive(false);
     }
   }
 

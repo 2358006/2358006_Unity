@@ -20,13 +20,13 @@ public class GoldController : MonoBehaviour
 
   void FixedUpdate()
   {
-    if (gameDirector.GetComponent<GameDirector>().GameOver())
+    if (gameDirector.GetComponent<GameDirector>().CheckPlay())
     {
-      gameObject.SetActive(false);
+      MoveGold();
     }
     else
     {
-      MoveGold();
+      gameObject.SetActive(false);
     }
   }
   void MoveGold()
