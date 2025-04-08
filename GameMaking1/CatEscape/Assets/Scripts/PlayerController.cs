@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour
     }
   }
 
-  #region  Button
   public void LButton()
   {
     if (gameDirector.GetComponent<GameDirector>().IsPlaying())
@@ -56,5 +55,4 @@ public class PlayerController : MonoBehaviour
       }
     }
   }
-  #endregion
 }

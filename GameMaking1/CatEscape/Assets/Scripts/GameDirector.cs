@@ -1,6 +1,6 @@
-using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine;
 using TMPro;
 public class GameDirector : MonoBehaviour
 {
@@ -12,10 +12,10 @@ public class GameDirector : MonoBehaviour
   GameObject hpGauge = null;
 
   GameObject gameOver = null;
-  GameObject reStart = null;
+  // GameObject reStart = null;
 
   GameObject gameStart = null;
-  GameObject start = null;
+  // GameObject start = null;
   GameObject itemGenerator = null;
 
   void Awake()
@@ -23,17 +23,14 @@ public class GameDirector : MonoBehaviour
     this.hpGauge = GameObject.Find("HpGauge");
     this.scoreText.text = "Score : " + score;
 
-    reStart = GameObject.Find("ReStart");
-    gameOver = GameObject.Find("GameOver");
+    gameOver = GameObject.Find("GameOverUI");
 
-    start = GameObject.Find("Start");
-    gameStart = GameObject.Find("GameStart");
+    gameStart = GameObject.Find("GameStartUI");
     itemGenerator = GameObject.Find("ItemGenerator");
   }
 
   void Start()
   {
-    reStart.SetActive(false);
     gameOver.SetActive(false);
     itemGenerator.SetActive(false);
   }
@@ -83,7 +80,6 @@ public class GameDirector : MonoBehaviour
   void GameOver()
   {
     gameOver.SetActive(true);
-    reStart.SetActive(true);
     itemGenerator.SetActive(false);
   }
   #endregion
@@ -92,7 +88,6 @@ public class GameDirector : MonoBehaviour
   public void GameStart()
   {
     gameStart.SetActive(false);
-    start.SetActive(false);
     itemGenerator.SetActive(true);
   }
 

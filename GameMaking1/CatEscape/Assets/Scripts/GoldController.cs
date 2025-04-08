@@ -46,9 +46,5 @@ public class GoldController : MonoBehaviour
         Destroy(gameObject);
       }
     }
-    else
-    {
-      gameObject.SetActive(false);
-    }
   }
 }

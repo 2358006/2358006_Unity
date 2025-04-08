@@ -47,9 +47,5 @@ public class ArrowController : MonoBehaviour
         Destroy(gameObject);
       }
     }
-    else
-    {
-      gameObject.SetActive(false);
-    }
   }
 }

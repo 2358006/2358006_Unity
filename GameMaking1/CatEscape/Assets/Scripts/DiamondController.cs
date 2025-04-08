@@ -47,9 +47,5 @@ public class DiamondController : MonoBehaviour
         Destroy(gameObject);
       }
     }
-    else
-    {
-      gameObject.SetActive(false);
-    }
   }
 }
