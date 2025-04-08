@@ -142,7 +142,8 @@ public class GameDirector : MonoBehaviour
   {
     if (Input.GetKeyDown(KeyCode.W))
     {
-      score += 100f;
+      score += 10f;
+      this.scoreText.text = $"Score : {score}";
     }
   }
 
