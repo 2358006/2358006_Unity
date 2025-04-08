@@ -20,37 +20,36 @@ public class ArrowController : MonoBehaviour
 
   void FixedUpdate()
   {
-    if (gameDirector.GetComponent<GameDirector>().CheckPlay())
-    {
-
-      MoveArrow();
-    }
-    else
-    {
-      gameObject.SetActive(false);
-    }
+    MoveArrow();
   }
 
   void MoveArrow()
   {
-    transform.Translate(0, -0.1f, 0);
-    if (transform.position.y < -5f)
+    if (gameDirector.GetComponent<GameDirector>().IsPlaying())
     {
-      Debug.Log("아이템이 땅에 떨어졌습니다.");
-      Destroy(gameObject);
+      transform.Translate(0, -0.1f, 0);
+      if (transform.position.y < -5f)
+      {
+        Debug.Log("아이템이 땅에 떨어졌습니다.");
+        Destroy(gameObject);
+      }
+
+      arrowVector = transform.position;
+      playerVector = this.player.transform.position;
+      arrowPlayerDir = arrowVector - playerVector;
+
+      arrowPlayerDistance = arrowPlayerDir.magnitude;
+
+      if ((arrowRadius + playerRadius) > arrowPlayerDistance)
+      {
+        Debug.Log("플레이어와 충돌하였습니다.");
+        gameDirector.GetComponent<GameDirector>().DecreaseHp();
+        Destroy(gameObject);
+      }
     }
-
-    arrowVector = transform.position;
-    playerVector = this.player.transform.position;
-    arrowPlayerDir = arrowVector - playerVector;
-
-    arrowPlayerDistance = arrowPlayerDir.magnitude;
-
-    if ((arrowRadius + playerRadius) > arrowPlayerDistance)
+    else
     {
-      Debug.Log("플레이어와 충돌하였습니다.");
-      gameDirector.GetComponent<GameDirector>().DecreaseHp();
-      Destroy(gameObject);
+      gameObject.SetActive(false);
     }
   }
 }

@@ -21,7 +21,6 @@ public class GameDirector : MonoBehaviour
   void Awake()
   {
     this.hpGauge = GameObject.Find("HpGauge");
-
     this.scoreText.text = "Score : " + score;
 
     reStart = GameObject.Find("ReStart");
@@ -41,8 +40,10 @@ public class GameDirector : MonoBehaviour
 
   void Update()
   {
+#if UNITY_EDITOR
     GameOverTest();
     ScoreTest();
+#endif
   }
 
   #region GameDirector
@@ -50,7 +51,7 @@ public class GameDirector : MonoBehaviour
   {
     this.hpGauge.GetComponent<Image>().fillAmount -= 0.1f;
     Debug.Log("현재 체력 : " + hpGauge.GetComponent<Image>().fillAmount);
-    CheckPlay();
+    IsPlaying();
   }
 
   public void IncreaseScoreDIA()
@@ -66,7 +67,7 @@ public class GameDirector : MonoBehaviour
     this.scoreText.text = "Score : " + score;
     Debug.Log("점수 : " + score);
   }
-  public bool CheckPlay()
+  public bool IsPlaying()
   {
     if (this.hpGauge.GetComponent<Image>().fillAmount == 0f)
     {

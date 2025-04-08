@@ -11,7 +11,12 @@ public class PlayerController : MonoBehaviour
 
   void Update()
   {
-    if (gameDirector.GetComponent<GameDirector>().CheckPlay())
+    Moving();
+  }
+
+  void Moving()
+  {
+    if (gameDirector.GetComponent<GameDirector>().IsPlaying())
     {
       if (Input.GetKeyDown(KeyCode.LeftArrow) && transform.position.x + (-move) > -8)
       {
@@ -26,9 +31,11 @@ public class PlayerController : MonoBehaviour
       }
     }
   }
+
+  #region  Button
   public void LButton()
   {
-    if (gameDirector.GetComponent<GameDirector>().CheckPlay())
+    if (gameDirector.GetComponent<GameDirector>().IsPlaying())
     {
       if (transform.position.x + (-move) > -8)
       {
@@ -37,10 +44,10 @@ public class PlayerController : MonoBehaviour
       }
     }
   }
-
   public void RButton()
+
   {
-    if (gameDirector.GetComponent<GameDirector>().CheckPlay())
+    if (gameDirector.GetComponent<GameDirector>().IsPlaying())
     {
       if (transform.position.x + move < 8)
       {
@@ -49,4 +56,5 @@ public class PlayerController : MonoBehaviour
       }
     }
   }
+  #endregion
 }

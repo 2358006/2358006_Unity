@@ -18,15 +18,13 @@ public class ItemGenerator : MonoBehaviour
   {
     gameDirector = GameObject.Find("GameDirector");
   }
-
   void Update()
   {
     ItemSpawn();
   }
-
   void ItemSpawn()
   {
-    if (gameDirector.GetComponent<GameDirector>().CheckPlay())
+    if (gameDirector.GetComponent<GameDirector>().IsPlaying())
     {
       Debug.Log("게임 시작");
       ItemGenerate(Timing());
@@ -36,7 +34,6 @@ public class ItemGenerator : MonoBehaviour
       Debug.Log("게임 끝");
     }
   }
-
   void ItemGenerate(float spawnTime)
   {
     this.deltaTime += Time.deltaTime;
@@ -49,7 +46,6 @@ public class ItemGenerator : MonoBehaviour
       itemInstance.transform.position = new(itemPositionRange, 7, 0);
     }
   }
-
   float Timing()
   {
     this.nowScore = gameDirector.GetComponent<GameDirector>().score;

@@ -239,7 +239,7 @@ MonoBehaviour:
   - {fileID: 1611436381271424512, guid: 7a600096c2c8c6642b8a195dcb0ae6bc, type: 3}
   - {fileID: 8307662431818781948, guid: 0663087a6ed1c1d49bf8bd428e27c1c0, type: 3}
   - {fileID: 3791779631008036287, guid: b1af1f2f598e34142bca73cd26b6c2e3, type: 3}
-  spawnMin: 0.4
+  spawnMin: 0.2
 --- !u!4 &22357668
 Transform:
   m_ObjectHideFlags: 0

@@ -20,36 +20,36 @@ public class DiamondController : MonoBehaviour
 
   void FixedUpdate()
   {
-    if (gameDirector.GetComponent<GameDirector>().CheckPlay())
-    {
-      MoveDIA();
-    }
-    else
-    {
-      gameObject.SetActive(false);
-    }
+    MoveDIA();
   }
 
   void MoveDIA()
   {
-    transform.Translate(0, -0.1f, 0);
-    if (transform.position.y < -5f)
+    if (gameDirector.GetComponent<GameDirector>().IsPlaying())
     {
-      Debug.Log("다이아몬드가 작살났습니다.");
-      Destroy(gameObject);
+      transform.Translate(0, -0.1f, 0);
+      if (transform.position.y < -5f)
+      {
+        Debug.Log("다이아몬드가 작살났습니다.");
+        Destroy(gameObject);
+      }
+
+      diamondVector = transform.position;
+      playerVector = this.player.transform.position;
+      diamondPlayerDir = diamondVector - playerVector;
+
+      diamondPlayerDistance = diamondPlayerDir.magnitude;
+
+      if ((diamondRadius + playerRadius) > diamondPlayerDistance)
+      {
+        Debug.Log("다이아몬드 득");
+        gameDirector.GetComponent<GameDirector>().IncreaseScoreDIA();
+        Destroy(gameObject);
+      }
     }
-
-    diamondVector = transform.position;
-    playerVector = this.player.transform.position;
-    diamondPlayerDir = diamondVector - playerVector;
-
-    diamondPlayerDistance = diamondPlayerDir.magnitude;
-
-    if ((diamondRadius + playerRadius) > diamondPlayerDistance)
+    else
     {
-      Debug.Log("다이아몬드 득");
-      gameDirector.GetComponent<GameDirector>().IncreaseScoreDIA();
-      Destroy(gameObject);
+      gameObject.SetActive(false);
     }
   }
 }
