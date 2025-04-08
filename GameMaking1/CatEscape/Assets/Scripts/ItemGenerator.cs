@@ -11,7 +11,7 @@ public class ItemGenerator : MonoBehaviour
   public float spawnMin = 0f;
   float deltaTime = 0.0f;
 
-  int scorePer100 = 0;
+  int goldPer100 = 0;
   float score = 0;
   void Awake()
   {
@@ -25,7 +25,7 @@ public class ItemGenerator : MonoBehaviour
 
   void Update()
   {
-    //게임 시작 후 100점씩 오를때 마다 화살 생성 쿨타임을 줄임
+    //게임 시작 후 10초 마다 화살 생성 쿨타임을 줄임
     if (gameDirector.GetComponent<GameDirector>().score - scorePer100 >= 100 && itemSpawn >= spawnMin)
     {
       itemSpawn *= 0.8f;
