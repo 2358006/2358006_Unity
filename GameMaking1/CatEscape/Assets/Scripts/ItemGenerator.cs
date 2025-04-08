@@ -12,7 +12,6 @@ public class ItemGenerator : MonoBehaviour
   float deltaTime = 0.0f;
 
   int scorePer100 = 0;
-
   float score = 0;
   void Awake()
   {
@@ -26,27 +25,30 @@ public class ItemGenerator : MonoBehaviour
 
   void Update()
   {
-    ItemGenerate();
+    //게임 시작 후 100점씩 오를때 마다 화살 생성 쿨타임을 줄임
+    if (gameDirector.GetComponent<GameDirector>().score - scorePer100 >= 100 && itemSpawn >= spawnMin)
+    {
+      itemSpawn *= 0.8f;
+      scorePer100 += 100;
+      Debug.Log($"속도 : {itemSpawn}");
+    }
+    if (gameDirector.GetComponent<GameDirector>().IsPlaying())
+    {
+      ItemGenerate();
+    }
   }
 
   void ItemGenerate()
   {
-    if (gameDirector.GetComponent<GameDirector>().IsPlaying())
-    {
-      Debug.Log("게임 시작");
-      this.deltaTime += Time.deltaTime;
+    Debug.Log("게임 시작");
+    this.deltaTime += Time.deltaTime;
 
-      if (deltaTime > itemSpawn)
-      {
-        deltaTime = 0f;
-        itemInstance = Instantiate(itemPrefab[Random.Range(0, itemPrefab.Length)]);
-        itemPositionRange = Random.Range(-6f, 7f);
-        itemInstance.transform.position = new(itemPositionRange, 7, 0);
-      }
-    }
-    else
+    if (deltaTime > itemSpawn)
     {
-      Debug.Log("게임 끝");
+      deltaTime = 0f;
+      itemInstance = Instantiate(itemPrefab[Random.Range(0, itemPrefab.Length)]);
+      itemPositionRange = Random.Range(-6f, 7f);
+      itemInstance.transform.position = new(itemPositionRange, 7, 0);
     }
   }
 }
