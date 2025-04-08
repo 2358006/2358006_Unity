@@ -8,6 +8,7 @@ public class GameDirector : MonoBehaviour
   public int goldPoint = 0;
   public int diaPoint = 0;
   public int score = 0;
+  int level = 1;
 
   GameObject hpGauge = null;
   GameObject gameOver = null;
@@ -60,6 +61,7 @@ public class GameDirector : MonoBehaviour
     this.scoreText.text = "Score : " + score;
     Debug.Log("점수 : " + score);
   }
+
   public bool IsPlaying()
   {
     if (this.hpGauge.GetComponent<Image>().fillAmount == 0f)
