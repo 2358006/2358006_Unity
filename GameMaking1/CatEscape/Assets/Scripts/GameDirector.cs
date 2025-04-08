@@ -4,11 +4,15 @@ using UnityEngine;
 using TMPro;
 public class GameDirector : MonoBehaviour
 {
-  public TMP_Text scoreText = null;
+  [Header("Money")]
+  public TMP_Text moneyText = null;
   public int goldPoint = 0;
   public int diaPoint = 0;
-  public int score = 0;
-  int level = 1;
+  public int money = 0;
+
+  [Header("Score")]
+  public TMP_Text scoreText = null;
+  public float score = 0f;
 
   GameObject hpGauge = null;
 
@@ -22,8 +26,11 @@ public class GameDirector : MonoBehaviour
 
   void Awake()
   {
+    this.moneyText.text = $"Money : {money}";
+
+    this.scoreText.text = $"Score : {score}";
+
     this.hpGauge = GameObject.Find("HpGauge");
-    this.scoreText.text = "Score : " + score;
 
     gameOver = GameObject.Find("GameOver");
     reStart = GameObject.Find("ReStart");
@@ -43,13 +50,24 @@ public class GameDirector : MonoBehaviour
 
   void Update()
   {
+    GetScore();
 #if UNITY_EDITOR
     GameOverTest();
     ScoreTest();
+    MoneyTest();
 #endif
   }
 
   #region GameDirector
+  void GetScore()
+  {
+    if (IsPlaying())
+    {
+      score += Time.deltaTime;
+    }
+    this.scoreText.text = $"Score : {score}";
+  }
+
   public void DecreaseHp()
   {
     this.hpGauge.GetComponent<Image>().fillAmount -= 0.1f;
@@ -57,18 +75,18 @@ public class GameDirector : MonoBehaviour
     IsPlaying();
   }
 
-  public void IncreaseScoreDIA()
+  public void IncreaseMoneyDIA()
   {
-    score += diaPoint;
-    this.scoreText.text = "Score : " + score;
-    Debug.Log("점수 : " + score);
+    money += diaPoint;
+    this.moneyText.text = $"Money : {money}";
+    Debug.Log($"Money : {money}");
   }
 
-  public void IncreaseScoreGOLD()
+  public void IncreaseMoneyGOLD()
   {
-    score += goldPoint;
-    this.scoreText.text = "Score : " + score;
-    Debug.Log("점수 : " + score);
+    money += goldPoint;
+    this.moneyText.text = $"Money : {money}";
+    Debug.Log($"Money : {money}");
   }
 
   public bool IsPlaying()
@@ -76,6 +94,10 @@ public class GameDirector : MonoBehaviour
     if (this.hpGauge.GetComponent<Image>().fillAmount == 0f)
     {
       GameOver();
+      return false;
+    }
+    else if (!itemGenerator.activeSelf)
+    {
       return false;
     }
     else
@@ -120,8 +142,16 @@ public class GameDirector : MonoBehaviour
   {
     if (Input.GetKeyDown(KeyCode.W))
     {
-      score += 100;
-      this.scoreText.text = "Score : " + score;
+      score += 100f;
+    }
+  }
+
+  void MoneyTest()
+  {
+    if (Input.GetKeyDown(KeyCode.E))
+    {
+      money += 100;
+      this.moneyText.text = $"Money : {money}";
     }
   }
   #endregion

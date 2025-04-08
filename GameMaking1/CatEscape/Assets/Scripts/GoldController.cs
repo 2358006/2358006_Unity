@@ -42,7 +42,7 @@ public class GoldController : MonoBehaviour
       if ((goldRadius + playerRadius) > goldPlayerDistance)
       {
         Debug.Log("금괴 득");
-        gameDirector.GetComponent<GameDirector>().IncreaseScoreGOLD();
+        gameDirector.GetComponent<GameDirector>().IncreaseMoneyGOLD();
         Destroy(gameObject);
       }
     }

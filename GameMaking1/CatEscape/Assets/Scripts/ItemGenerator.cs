@@ -11,7 +11,9 @@ public class ItemGenerator : MonoBehaviour
   public float spawnMin = 0f;
   float deltaTime = 0.0f;
 
-  int score = 0;
+  int scorePer100 = 0;
+
+  float score = 0;
   void Awake()
   {
     gameDirector = GameObject.Find("GameDirector");

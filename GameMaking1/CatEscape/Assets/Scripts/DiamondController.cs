@@ -43,7 +43,7 @@ public class DiamondController : MonoBehaviour
       if ((diamondRadius + playerRadius) > diamondPlayerDistance)
       {
         Debug.Log("다이아몬드 득");
-        gameDirector.GetComponent<GameDirector>().IncreaseScoreDIA();
+        gameDirector.GetComponent<GameDirector>().IncreaseMoneyDIA();
         Destroy(gameObject);
       }
     }
