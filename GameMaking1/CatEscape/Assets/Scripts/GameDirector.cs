@@ -11,8 +11,13 @@ public class GameDirector : MonoBehaviour
   int level = 1;
 
   GameObject hpGauge = null;
+
   GameObject gameOver = null;
+  GameObject reStart = null;
+
   GameObject gameStart = null;
+  GameObject start = null;
+
   GameObject itemGenerator = null;
 
   void Awake()
@@ -20,15 +25,19 @@ public class GameDirector : MonoBehaviour
     this.hpGauge = GameObject.Find("HpGauge");
     this.scoreText.text = "Score : " + score;
 
-    gameOver = GameObject.Find("GameOverUI");
+    gameOver = GameObject.Find("GameOver");
+    reStart = GameObject.Find("ReStart");
 
-    gameStart = GameObject.Find("GameStartUI");
+    gameStart = GameObject.Find("GameStart");
+    start = GameObject.Find("Start");
+
     itemGenerator = GameObject.Find("ItemGenerator");
   }
 
   void Start()
   {
     gameOver.SetActive(false);
+    reStart.SetActive(false);
     itemGenerator.SetActive(false);
   }
 
@@ -78,6 +87,7 @@ public class GameDirector : MonoBehaviour
   void GameOver()
   {
     gameOver.SetActive(true);
+    reStart.SetActive(true);
     itemGenerator.SetActive(false);
   }
   #endregion
@@ -86,6 +96,7 @@ public class GameDirector : MonoBehaviour
   public void GameStart()
   {
     gameStart.SetActive(false);
+    start.SetActive(false);
     itemGenerator.SetActive(true);
   }
 
