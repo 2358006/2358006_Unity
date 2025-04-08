@@ -239,6 +239,7 @@ MonoBehaviour:
   - {fileID: 1611436381271424512, guid: 7a600096c2c8c6642b8a195dcb0ae6bc, type: 3}
   - {fileID: 8307662431818781948, guid: 0663087a6ed1c1d49bf8bd428e27c1c0, type: 3}
   - {fileID: 3791779631008036287, guid: b1af1f2f598e34142bca73cd26b6c2e3, type: 3}
+  itemSpawn: 1
   spawnMin: 0.2
 --- !u!4 &22357668
 Transform:
@@ -1140,8 +1141,7 @@ Transform:
   m_LocalPosition: {x: 0, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1876319827}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1195390119
@@ -1893,7 +1893,7 @@ RectTransform:
   m_Children:
   - {fileID: 1669968850}
   - {fileID: 2126312043}
-  m_Father: {fileID: 1195390118}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2307,10 +2307,11 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
-  - {fileID: 21925737}
-  - {fileID: 231401629}
-  - {fileID: 1520661679}
   - {fileID: 1195390118}
   - {fileID: 22357668}
   - {fileID: 272259347}
+  - {fileID: 231401629}
+  - {fileID: 1520661679}
+  - {fileID: 1876319827}
+  - {fileID: 21925737}
   - {fileID: 1189425227}

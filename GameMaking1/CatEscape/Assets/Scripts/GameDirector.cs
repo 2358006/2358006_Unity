@@ -10,12 +10,8 @@ public class GameDirector : MonoBehaviour
   public int score = 0;
 
   GameObject hpGauge = null;
-
   GameObject gameOver = null;
-  // GameObject reStart = null;
-
   GameObject gameStart = null;
-  // GameObject start = null;
   GameObject itemGenerator = null;
 
   void Awake()
